@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.Eror != null)
+{
+    <div class="alert alert-danger">@ViewBag.Eror</div>
+}
+<a class="btn btn-success" asp-area="Admin" asp-controller="Home" asp-action="Index">Ana Sayfaya Geri Dön</a>

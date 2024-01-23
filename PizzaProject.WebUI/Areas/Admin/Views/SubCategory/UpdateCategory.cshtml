@@ -1,0 +1,19 @@
+﻿@model PizzaProject.Model.Tables.SubCategory
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Alt kategori Güncelle</h1>
+
+<form asp-area="Admin" asp-controller="SubCategory" asp-action="UpdateCategory" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <input type="text" name="SubCategoryName" value="@Model.SubCategoryName" placeholder="Kategori Adını Giriniz" /><br />
+    <select name="CategoryId">
+        <option value="@Model.CategoryId" selected>Kategori Seçilmezse Eskisi Etkin Olur</option>
+        @await Component.InvokeAsync("UpdateCategory") 
+</select>
+
+    
+    <input type="submit" value="Güncelle" />
+</form>

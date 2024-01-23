@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered verticle-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">###</th>
+                            <th scope="col">Müşteri İsim</th>
+                            <th scope="col">Müşteri Telefon</th>
+                            <th scope="col">Müşteri Email</th>
+                            <th scope="col">Müşteri Adres</th>
+                            <th scope="col">Müşteri Adres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><a asp-area="Admin" asp-controller="Order" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-success">✔️</a></td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.CustomerPhone</td>
+                                <td>@item.CustomerEmail</td>
+                                <td>@item.CustomerAddress</td>
+                                <td><a asp-area="Admin" asp-controller="OrderProduct" asp-action="Index" asp-route-id="@item.ID" class="btn btn-outline-secondary">Müşterinin Siparişlerini Gör</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

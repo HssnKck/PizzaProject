@@ -1,0 +1,5 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.SubCategory>
+@foreach(var item in Model)
+{
+    <option value="@item.ID">@item.SubCategoryName</option>
+}

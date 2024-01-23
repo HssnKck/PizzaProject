@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Product>
+@{
+    ViewData["Title"] = "AllListPizza";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.Category</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div style="width: 322px; height: 400px;" class="col-4">
+                <div class="card">
+                    <img style="margin: auto;width: 174px; height: 174px;" class="card-img-top" src="~/images/@item.ProductPicture" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 style="font-weight: bold;" class="card-title">@item.ProductName</h5>
+                        <p class="card-text">@item.ProductDescription</p>
+                        <label style="font-weight: bold;font-size:24px;">@item.ProductPrice ₺</label>
+                        <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID" style="position: absolute;right:20px;" class="btn btn-outline-warning">Ürün Detayı</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

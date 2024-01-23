@@ -1,0 +1,22 @@
+﻿#ortala {
+    width: 400px;
+    height: 100px;
+    padding: 20px;
+    margin: auto;
+}
+
+#form {
+    width: 400px;
+    border: 2px solid rgb(131, 131, 5);
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+label {
+    color: white;
+}
+
+#body {
+    background-size: cover;
+}

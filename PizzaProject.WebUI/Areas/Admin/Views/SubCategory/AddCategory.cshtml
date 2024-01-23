@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Category>
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Alt Kategori Ekle</h1>
+
+<form asp-area="Admin" asp-controller="SubCategory" asp-action="AddCategory" method="post" enctype="multipart/form-data">
+    <input type="text" name="SubCategoryName" placeholder="Alt Kategori Adını Giriniz" /><br />
+    <br />
+    <select name="CategoryId">
+        @foreach (var item in Model)
+        {
+            <option value="@item.ID">@item.CategoryName</option>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Kaydet" />
+
+</form>

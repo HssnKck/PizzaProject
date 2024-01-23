@@ -1,0 +1,5 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Order>
+@foreach (var item in Model)
+{
+    <li><a asp-area="Admin" asp-controller="OrderProduct" asp-action="Index" asp-route-id="@item.ID">@item.CustomerName</a></li>
+}

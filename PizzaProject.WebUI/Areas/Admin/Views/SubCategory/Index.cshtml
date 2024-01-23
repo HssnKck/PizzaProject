@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.SubCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="text-align:center">@ViewBag.Category</h1>
+<a asp-area="Admin" asp-controller="SubCategory" asp-action="AddCategory" class="btn btn-primary">Yeni Alt Kategori Ekle</a>
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered verticle-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kategori Adı</th>
+                            <th scope="col">###</th>
+                            <th scope="col">İşlemler</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.SubCategoryName</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-id="@item.ID"><span class="label gradient-1 btn-rounded">Ürünlere Git</span> </a>
+                                </td>
+                                <td>
+                                    <span>
+                                        <a asp-area="Admin" asp-controller="SubCategory" asp-action="UpdateCategory" asp-route-id="@item.ID" asp data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                        <a asp-area="Admin" asp-controller="SubCategory" asp-action="DeleteCategory" asp-route-id="@item.ID" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

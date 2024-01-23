@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.Eror != null)
+{
+    <div class="alert alert-danger">@ViewBag.Eror</div>
+
+}
+<form asp-area="Admin" asp-controller="Product" asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="card" style="width: 25rem;">
+        <h3 style="text-align:center">Yeni Ürün</h3>
+        <div class="card-body">
+            <p class="card-text">
+                Ürün Resmini Ekle<br />
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="formFileMultiple" name="File" multiple>
+                </div>
+            </p>
+        </div>
+        <div style="padding-left: 10px;margin-left: 10px;">
+            <label>Ürün Adı</label>
+            <input style="width: 300px;" class="form-control" type="text" name="ProductName">
+            <br />
+            <label>Ürün Açıklaması</label>
+            <input style="width: 300px;" class="form-control" type="text" name="ProductDescription">
+            <br />
+            <label>Ürün Fiyatı</label>
+            <input style="width: 300px;" class="form-control" type="text" name="ProductPrice">
+        </div>
+        <br />
+        <select name="CategoryId">
+            @await Component.InvokeAsync("ProductUpdateCat")
+        </select>
+        <select name="SubCategoryId">
+            @await Component.InvokeAsync("ProductUpdateSub")
+        </select>
+        <input type="submit" value="Ekle" class="btn btn-outline-success" />
+    </div>
+
+</form>

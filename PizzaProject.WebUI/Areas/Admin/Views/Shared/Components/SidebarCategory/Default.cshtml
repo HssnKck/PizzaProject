@@ -1,0 +1,6 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Category>
+
+@foreach (var item in Model)
+{
+    <li><a asp-area="Admin" asp-controller="Category" asp-action="SubCategoryList" asp-route-id="@item.ID">@item.CategoryName</a></li>
+}

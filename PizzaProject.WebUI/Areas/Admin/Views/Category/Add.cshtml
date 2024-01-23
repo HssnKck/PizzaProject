@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategori Ekle</h1>
+
+
+<form asp-area="Admin" asp-controller="Category" asp-action="Add" method="post">
+    <input type="text" name="CategoryName" placeholder="Kategori Adını Giriniz" /><br />
+    <br />
+    <input type="submit" value="Kaydet" />
+
+</form>

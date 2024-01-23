@@ -1,0 +1,44 @@
+﻿@model PizzaProject.WebUI.Models.BuyInBasket
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Sepet Özeti</h1>
+
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Ürünün Adı</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Adet</th>
+            <th scope="col">###</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BasketItems)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.ProductPrice</td>
+                <td>@item.ProductQuantity</td>
+                <td><a class="btn btn-danger" asp-controller="Basket" asp-action="RemoveToBasket" asp-route-id="@item.ID">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Toplam Fiyat : @Model.TotalPrice</p>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary col-md-4">Alışverişe Devam Et</a>
+        <a asp-controller="Payment" asp-action="Index" class="btn btn-success col-md-4">Ödeme Yap</a>
+        <a asp-controller="Basket" asp-action="ClearBasket" class="btn btn-danger col-md-4">Sepeti Boşalt</a>
+    </div>
+</div>
+

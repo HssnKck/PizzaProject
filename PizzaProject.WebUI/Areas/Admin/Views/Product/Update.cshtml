@@ -1,0 +1,48 @@
+﻿@model PizzaProject.Model.Tables.Product
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.Eror != null)
+{
+    <div class="alert alert-danger">@ViewBag.Eror</div>
+
+}
+
+<form asp-area="Admin" asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data">
+    <div class="card" style="width: 25rem;">
+        <h3 style="text-align:center">@Model.ProductName</h3>
+        <img style="width: 180px; height: 180px;" src="~/images/@Model.ProductPicture" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">
+                Ürün Resmini Değiştir<br />
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="formFileMultiple" name="File" multiple>
+                </div>
+            </p>
+        </div>
+        <div style="padding-left: 10px;margin-left: 10px;">
+            <label>Ürün Adı</label>
+            <input style="width: 300px;" class="form-control" type="text" value="@Model.ProductName" name="ProductName">
+            <br />
+            <label>Ürün Açıklaması</label>
+            <input style="width: 300px;" class="form-control" type="text" value="@Model.ProductDescription" name="ProductDescription">
+            <br />
+            <label>Ürün Fiyatı</label>
+            <input style="width: 300px;" class="form-control" type="text" value="@Model.ProductPrice" name="ProductPrice">
+        </div>
+        <br />
+        <select name="CategoryId" >
+            <option value="@Model.CategoryId">Kategori Seçilmezse Eskisi Etkin Olur</option>
+            @await Component.InvokeAsync("ProductUpdateCat")
+        </select>
+        <select name="SubCategoryId">
+            <option value="@Model.SubCategoryId">Alt Kategori Seçilmezse Eskisi Etkin Olur</option>
+            @await Component.InvokeAsync("ProductUpdateSub")
+        </select>
+        <input type="hidden" value="@Model.ProductPicture" name="ProductPicture" />
+        <input type="submit" value="Güncelle" class="btn btn-outline-success" />
+    </div>
+
+</form>

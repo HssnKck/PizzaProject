@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PizzaProject.Model.Tables.Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Jet Pizza'ya Hoşgeldiniz</h1>
+
+@foreach (var item in Model)
+{
+    <div style="width: 300px;" class="list-group">
+        <a asp-controller="SubCategory" asp-action="Index" asp-route-id="@item.ID" class="list-group-item list-group-item-action">@item.CategoryName</a>
+    </div>
+}
