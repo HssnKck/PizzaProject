@@ -17,7 +17,6 @@ namespace PizzaProject.WebUI.Controllers
         }
         public IActionResult Index(int id)
         {
-            ViewBag.ID = _dbProduct.GetList().FirstOrDefault(x => x.SubCategoryId == id).ID;
             ViewBag.SubCategory = _dbSubCategory.GetRecord(id).SubCategoryName;
             return View(_dbProduct.GetList().Where(x => x.SubCategoryId == id).ToList());
         }
